@@ -1,0 +1,11 @@
+cache/
+osm_dumps/*
+*.pbf*
+*.ipynb
+.ipynb_checkpoints
+.vscode
+__pycache__
+*.pickle
+*.parquet
+.DS_Store
+test.sh
