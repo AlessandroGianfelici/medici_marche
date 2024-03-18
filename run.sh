@@ -1,5 +1,5 @@
 brew install wget osrm-backend
-wget https://download.geofabrik.de/europe/italy/centro-latest.osm.pbf --directory-prefix=osm_dumps
+wget https://osmit-estratti.wmcloud.org/output/pbf/regioni/11_Marche.osm.pbf --directory-prefix=osm_dumps
 
 osrm-extract -p osrm-backend/profiles/foot.lua osm_dumps/centro-latest.osm.pbf
 osrm-partition osm_dumps/centro-latest.osrm

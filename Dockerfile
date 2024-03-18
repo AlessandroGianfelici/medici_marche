@@ -46,15 +46,15 @@ RUN NPROC=${BUILD_CONCURRENCY:-$(nproc)} && \
 WORKDIR /
 
 COPY "requirements.txt" .
-COPY "osm_dumps/centro-latest.osm.pbf" .
+RUN wget https://osmit-estratti.wmcloud.org/output/pbf/regioni/11_Marche.osm.pbf
 
-RUN osrm-extract -p osrm-backend/profiles/car.lua centro-latest.osm.pbf && \
-    osrm-partition centro-latest.osrm && \
+RUN osrm-extract -p osrm-backend/profiles/car.lua 11_Marche.osm.pbf && \
+    osrm-partition 11_Marche.osrm && \
     cp /usr/local/lib/libtbb.so.12 /usr/lib/libtbb.so.12 && \
-    osrm-customize centro-latest.osrm && \
-    osrm-contract centro-latest.osrm && \
+    osrm-customize 11_Marche.osrm && \
+    osrm-contract 11_Marche.osrm && \
     apt install -y pip && pip install -r requirements.txt && \
-    rm -rf centro-latest.osm.pbf
+    rm -rf 11_Marche.osm.pbf
 
 COPY "trova_medico.py" .
 COPY "run.sh" .
